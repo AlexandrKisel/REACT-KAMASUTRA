@@ -14,7 +14,7 @@ const Message = (props) => {
     return <div className={s.message}>{props.message}</div>
 }
 
-const Dialogs = (props) => {
+const Dialogs = () => {
     let dialogsData = [
         {id: 1, name: 'Dimych'},
         {id: 2, name: 'Andrey'},
@@ -22,6 +22,15 @@ const Dialogs = (props) => {
         {id: 4, name: 'Sasha'},
         {id: 5, name: 'Viktor'},
         {id: 6, name: 'Valera'},
+    ];
+
+    let messagesData = [
+        {id: 1, message: 'Hi'},
+        {id: 2, message: 'How are you?'},
+        {id: 3, message: 'I\'m ok, thank you'},
+        {id: 4, message: 'Yo'},
+        {id: 5, message: 'Hello'},
+        {id: 6, message: 'Goodbye'},
     ];
 
     return (
@@ -35,10 +44,10 @@ const Dialogs = (props) => {
                 <DialogsItem name={dialogsData[5].name} id={dialogsData[5].id}/>
             </div>
             <div className={s.messages}>
-                <Message message={"Hi"}/>
-                <Message message={"How are you?"}/>
-                <Message message={"I'm ok, thank you"}/>
-                <Message message={"Yo"}/>
+                <Message message={messagesData[0].message}/>
+                <Message message={messagesData[1].message}/>
+                <Message message={messagesData[2].message}/>
+                <Message message={messagesData[3].message}/>
             </div>
         </div>
     )
