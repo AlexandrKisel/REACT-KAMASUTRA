@@ -1,5 +1,5 @@
 const store = {
-    state: {
+    _state: {
         profilePage: {
             posts: [
                 {id: 1, message: 'Hi, how are you?', likesCount: 12},
@@ -29,44 +29,41 @@ const store = {
             newMessageText: 'it-kamasutra.com'
         },
     },
-
-    rerenderEntireTree() {
+    getState() {
+      return this._state
+    },
+    _callSubscriber() {
         console.log('State  changed')
     },
-
     addPost() {
         let newPost = {
             id: 5,
-            message: store.state.profilePage.newPostText,
+            message: this._state.profilePage.newPostText,
             likesCount: 0
         };
-        store.state.profilePage.posts.push(newPost);
-        store.state.profilePage.newPostText = '';
-        store.rerenderEntireTree(store);
+        this._state.profilePage.posts.push(newPost);
+        this._state.profilePage.newPostText = '';
+        this._callSubscriber(this._state);
     },
-
     updateNewPostText(newText) {
-        store.state.profilePage.newPostText = newText;
-        store.rerenderEntireTree(store);
+        this._state.profilePage.newPostText = newText;
+        this._callSubscriber(this._state);
     },
-
     addMessage() {
         let newMessage = {
             id: 7,
-            message: store.state.dialogsPage.newMessageText
+            message: this._state.dialogsPage.newMessageText
         };
-        store.state.dialogsPage.messages.push(newMessage);
-        store.state.dialogsPage.newMessageText = '';
-        store.rerenderEntireTree(store);
+        this._state.dialogsPage.messages.push(newMessage);
+        this._state.dialogsPage.newMessageText = '';
+        this._callSubscriber(this._state);
     },
-
     updateNewMessageText(newText) {
-        store.state.dialogsPage.newMessageText = newText;
-        store.rerenderEntireTree(store);
+        this._state.dialogsPage.newMessageText = newText;
+        this._callSubscriber(this._state);
     },
-
     subscribe(observer) {
-        store.rerenderEntireTree = observer; //наблюдатель
+        this._callSubscriber = observer; //наблюдатель
     }
 }
 
