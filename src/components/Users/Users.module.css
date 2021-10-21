@@ -1,4 +1,10 @@
+.users {
+    margin: 15px;
+    display: inline-block;
+}
+
 .userPhoto {
+    margin: 15px;
     width: 50px;
 }
 
