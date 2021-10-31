@@ -70,7 +70,6 @@ export const getUsersProfile = (userId) => {
 export const getStatus = (userId) => (dispatch) => {
         profileAPI.getStatus(userId)
             .then(response => {
-                debugger;
                 dispatch(setStatus(response.data));
             })
 }
